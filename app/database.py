@@ -6,7 +6,7 @@ from app.config import Settings
 
 engine = create_engine(Settings.DATABASE_URL)
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
@@ -18,6 +18,3 @@ def get_db():
     
     finally: 
         db.close()
-
-
-
