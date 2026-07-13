@@ -6,6 +6,8 @@ from app.config import Settings
 
 engine = create_engine(Settings.DATABASE_URL)
 
+
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
