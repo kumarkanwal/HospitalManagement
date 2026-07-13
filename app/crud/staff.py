@@ -21,7 +21,7 @@ def create_staff(db: Session, staff: StaffCreate):
 def get_staff(db : Session, staff_id: int):
     return db.query(Staff).filter(Staff.id == staff_id).first()
 
-def get_all_staff(db: Session, staff_id:int):
+def get_all_staff(db: Session):
     return db.query(Staff).all()
 
 def update_staff(db: Session, staff: StaffCreate):
