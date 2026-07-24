@@ -26,7 +26,7 @@ def get_one(patient_id: int, db: Session = Depends(get_db)):
     patient = get_patient(db,patient_id)
 
     if not patient:
-        raise HTTPException(status_code=404, detail="patient not Found")
+        raise HTTPException(status_code=404, detail="Patient not found")
     return patient
 
 @router.put("/{patient_id}", response_model=PatientResponse)
