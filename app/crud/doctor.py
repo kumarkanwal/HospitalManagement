@@ -40,8 +40,12 @@ def update_doctor(db: Session, doctor_id: int, doctor: DoctorCreate):
     db_doctor.email = doctor.email
     db_doctor.phone = doctor.phone
     db_doctor.salary = doctor.salary
-    db.commit()
-    db.refresh(db_doctor)
+    try:
+        db.commit()
+        db.refresh(db_doctor)
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=400, detail="Email or phone already exists")
     return db_doctor
 
 def delete_doctor(db: Session, doctor_id:int):
