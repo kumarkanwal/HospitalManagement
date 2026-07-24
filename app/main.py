@@ -4,12 +4,17 @@ from sqlalchemy import text
 from app.config import settings
 from app.database import engine
 
+from app.routes import doctor, patient, staff
 
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
     debug=settings.DEBUG,
 )
+
+app.include_router(doctor.router)              
+app.include_router(patient.router)
+app.include_router(staff.router)
 
 
 @app.on_event("startup")
