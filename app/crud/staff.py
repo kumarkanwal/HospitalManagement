@@ -24,7 +24,7 @@ def get_staff(db : Session, staff_id: int):
 def get_all_staff(db: Session):
     return db.query(Staff).all()
 
-def update_staff(db: Session, staff: StaffCreate):
+def update_staff(db: Session, staff_id: int, staff: StaffCreate):
     db_staff = db.query(Staff).filter(Staff.id == staff_id).first()
     db_staff.name = staff.name
     db_staff.role = staff.role
